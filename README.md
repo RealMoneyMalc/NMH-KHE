@@ -1,2 +1,2 @@
 # NMH-KHE
-StudIOS Devpost Submission
+StudIOS Kent Hacks Enough 2021 Devpost Submission
