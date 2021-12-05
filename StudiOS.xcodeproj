@@ -1,0 +1,2230 @@
+//
+//  ContentView.swift
+//  Shared
+//
+//  Created by NMHacks on 12/4/21.
+//
+import SwiftUI
+
+let backgroundGradient = LinearGradient(
+    gradient: Gradient(colors: [Color.pink, Color.purple]),
+    startPoint: .top, endPoint: .bottom)
+
+let gradient = Gradient(colors: [.black, .blue])
+
+
+struct ContentView: View {
+    
+    //variable to set selectedTabIndex
+    @State var selectedTabIndex = 0
+    
+    @State private var progress = 0
+    
+    init() {
+        UITabBar.appearance().barTintColor = UIColor.black
+        UITabBar.appearance().isTranslucent = false
+        
+    }
+    
+    /// Current progress time expresed in seconds
+    @State private var progressTimeCG: CGFloat = 0
+    @State private var progressTime = 0
+    
+    @State private var progressTimeMath = 0
+    @State private var progressTimeEnglish = 0
+    @State private var progressTimeWLang = 0
+    @State private var progressTimeCS = 0
+    @State private var progressTimeEngin = 0
+    @State private var progressTimeChem = 0
+    @State private var progressTimePhys = 0
+    @State private var progressTimeAstro = 0
+    @State private var progressTimeBio = 0
+    @State var ptr = 0
+    
+        @State private var isRunning = false
+    @State private var isRunningt2 = false
+    @State private var isRunningt3 = false
+    @State private var isRunningt4 = false
+    @State private var isRunningt5 = false
+    @State private var isRunningt6 = false
+    @State private var isRunningt7 = false
+    @State private var isRunningt8 = false
+    @State private var isRunningt9 = false
+    @State private var isRunningt10 = false
+
+        /// Computed properties to get the progressTime in hh:mm:ss format
+        var hours: Int {
+            progressTime / 3600
+        }
+        var hours2: Int {
+            progressTimeMath / 3600
+        }
+        var hours3: Int {
+            progressTimeEnglish / 3600
+        }
+        var hours4: Int {
+            progressTimeWLang / 3600
+        }
+        var hours5: Int {
+            progressTimeCS / 3600
+        }
+        var hours6: Int {
+            progressTimeEngin / 3600
+        }
+        var hours7: Int {
+            progressTimeChem / 3600
+        }
+        var hours8: Int {
+            progressTimePhys / 3600
+        }
+        var hours9: Int {
+            progressTimeAstro / 3600
+        }
+        var hours10: Int {
+            progressTimeBio / 3600
+        }
+
+        var minutes: Int {
+            (progressTime % 3600) / 60
+        }
+    var minutes2: Int {
+        (progressTimeMath % 3600) / 60
+    }
+    var minutes3: Int {
+        (progressTimeEnglish % 3600) / 60
+    }
+    var minutes4: Int {
+        (progressTimeWLang % 3600) / 60
+    }
+    var minutes5: Int {
+        (progressTimeCS % 3600) / 60
+    }
+    var minutes6: Int {
+        (progressTimeEngin % 3600) / 60
+    }
+    var minutes7: Int {
+        (progressTimeChem % 3600) / 60
+    }
+    var minutes8: Int {
+        (progressTimePhys % 3600) / 60
+    }
+    var minutes9: Int {
+        (progressTimeAstro % 3600) / 60
+    }
+    var minutes10: Int {
+        (progressTimeBio % 3600) / 60
+    }
+        var seconds: Int {
+            progressTime % 60
+        }
+    var seconds2: Int {
+        progressTimeMath % 60
+    }
+    var seconds3: Int {
+        progressTimeEnglish % 60
+    }
+    var seconds4: Int {
+        progressTimeWLang % 60
+    }
+    var seconds5: Int {
+        progressTimeCS % 60
+    }
+    var seconds6: Int {
+        progressTimeEngin % 60
+    }
+    var seconds7: Int {
+        progressTimeChem % 60
+    }
+    var seconds8: Int {
+        progressTimePhys % 60
+    }
+    var seconds9: Int {
+        progressTimeAstro % 60
+    }
+    var seconds10: Int {
+        progressTimeBio % 60
+    }
+
+        /// Increase progressTime each second
+        @State private var timer: Timer?
+    @State private var timer2: Timer?
+    @State private var timer3: Timer?
+    @State private var timer4: Timer?
+    @State private var timer5: Timer?
+    @State private var timer6: Timer?
+    @State private var timer7: Timer?
+    @State private var timer8: Timer?
+    @State private var timer9: Timer?
+    @State private var timer10: Timer?
+    
+    @State private var cointotal: CGFloat = 0;
+    var coinhub: CGFloat{
+        progressTimeCG / 90
+    }
+    var insights: CGFloat{
+        progressTimeCG / 3600
+    }
+    var coinhub2: CGFloat{
+        coinhub.truncatingRemainder(dividingBy:90)
+    }
+    
+    @State var isPresented: Bool = false
+    @State var isPresented2: Bool = false
+    @State var isPresented3: Bool = false
+    @State var isPresented4: Bool = false
+    @State var isPresented5: Bool = false
+    @State var isPresented6: Bool = false
+    
+    
+    
+    @State var classChoice = "Nothing"
+    
+    @State var tund: Double = 999
+    @State var t2: Double = 1
+    @State var t3: Double = 1
+    @State var t4: Double = 1
+    @State var t5: Double = 1
+    @State var t6: Double = 1
+    @State var t7: Double = 1
+    @State var t8: Double = 1
+    @State var t9: Double = 1
+    @State var t10: Double = 1
+    
+    @State var finalGrade = "null"
+    @State var RFS: Bool = false
+    @State var solutionVar = "Nothing to report!"
+    @State var solutionVarLev = "null"
+    @State var satlev = "null"
+    
+    var body: some View {
+        
+        ZStack {
+            
+            TabView {
+                // Content of a tab 2
+                ScrollView{
+                    VStack{
+                        VStack{
+                        Spacer()
+                        VStack(spacing: 50){
+                                    
+                                    ZStack {
+                                        Circle()
+                                            .stroke(Color.blue, lineWidth: 20)
+                                        Circle()
+                                            .trim(from: 0, to: coinhub2)
+                                            .stroke(Color.white, lineWidth: 20)
+                                            .rotationEffect(.degrees(-90))
+                                        .overlay(
+                                            Text("\(Int(coinhub))%"))
+                                        .foregroundColor(.white)
+                                             
+                                    }.padding(20)
+                                    .frame(height: 300)
+                                    
+                                    Spacer()
+                                }
+                    }
+                    .offset(y:20)
+                    .frame(width:300, height:300)
+                    ZStack{
+                Rectangle()
+                    .fill(Color.clear)
+                    .frame(width:350, height:150)
+                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                        ZStack {
+                              Button(action: {
+                                withAnimation {
+                                  self.isPresented.toggle()
+                                }
+                              }) {
+                                  HStack{
+                                  Text("Insights")
+                                      .foregroundColor(.blue)
+                                      .frame(width:100, height: 50, alignment: .top)
+                                      .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                  }
+                              }
+
+                              if isPresented {
+                                ZStack(alignment: .top) {
+                                  Button(action: {
+                                    withAnimation {
+                                      self.isPresented.toggle()
+                                    }
+                                  }) {
+                                    Text("You've studied \(insights) hours total!")
+                                      .foregroundColor(.blue)
+                                      .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                  }
+                                }
+                                .frame(width: 350, height: 150)
+                                .background(Color.white)
+                                .transition(.move(edge: .bottom))
+                                .animation(.easeInOut)
+                                .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                              }
+                            }
+
+                    }
+                        ZStack{
+                            ZStack{
+                                                            Rectangle()
+                                                        .fill(Color.blue)
+                                                        .frame(width:350, height:350)
+                                                        .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                                                VStack {
+                                                                            HStack(spacing: 1) {
+                                                                                StopwatchUnit(timeUnit: hours, timeUnitText: "HR", color: .clear)
+                                                                                Text(":")
+                                                                                    .font(.system(size: 48))
+                                                                                    .foregroundColor(.white)
+                                                                                    .offset(y: -18)
+                                                                                StopwatchUnit(timeUnit: minutes, timeUnitText: "MIN", color: .clear)
+                                                                                Text(":")
+                                                                                    .font(.system(size: 48))
+                                                                                    .foregroundColor(.white)
+                                                                                    .offset(y: -18)
+                                                                                StopwatchUnit(timeUnit: seconds, timeUnitText: "SEC", color: .clear)
+                                                                            }
+
+                                                                            HStack {
+                                                                                Button(action: {
+                                                                                    if isRunning{
+                                                                                        timer?.invalidate()
+                                                                                    } else {
+                                                                                        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+                                                                                            if classChoice == "Math"{
+                                                                                                progressTimeMath += 1
+                                                                                                progressTimeCG += 1
+                                                                                                ptr += 1
+                                                                                            }
+                                                                                            if classChoice == "English"{
+                                                                                                progressTimeEnglish += 1
+                                                                                                progressTimeCG += 1
+                                                                                                ptr += 1
+                                                                                            }
+                                                                                            else if classChoice == "World Language"{
+                                                                                                progressTimeWLang += 1
+                                                                                                progressTimeCG += 1
+                                                                                                ptr += 1
+                                                                                            }
+                                                                                            else if classChoice == "Computer Science"{
+                                                                                                progressTimeCS += 1
+                                                                                                progressTimeCG += 1
+                                                                                                ptr += 1
+                                                                                            }
+                                                                                            else if classChoice == "Engineering"{
+                                                                                                progressTimeEngin += 1
+                                                                                                progressTimeCG += 1
+                                                                                                ptr += 1
+                                                                                            }
+                                                                                            else if classChoice == "Chemistry"{
+                                                                                                progressTimeChem += 1
+                                                                                                progressTimeCG += 1
+                                                                                                ptr += 1
+                                                                                            }
+                                                                                            else if classChoice == "Physics"{
+                                                                                                progressTimePhys += 1
+                                                                                                progressTimeCG += 1
+                                                                                                ptr += 1
+                                                                                            }
+                                                                                            else if classChoice == "Astronomy"{
+                                                                                                progressTimeAstro += 1
+                                                                                                progressTimeCG += 1
+                                                                                                ptr += 1
+                                                                                            }
+                                                                                            else if classChoice == "Biology"{
+                                                                                                progressTimeBio += 1
+                                                                                                progressTimeCG += 1
+                                                                                                ptr += 1
+                                                                                            }
+                                                                                            else if classChoice == "Nothing"{
+                                                                                                progressTime += 0
+                                                                                                progressTimeCG += 0
+                                                                                                ptr += 0
+                                                                                            }
+                                                                                            if 3600.isMultiple(of: ptr) {
+                                                                                              self.isPresented6.toggle()
+                                                                                            }
+                                                                                        })
+                                                                                    }
+                                                                                    isRunning.toggle()
+                                                                                }) {
+                                                                                    ZStack {
+                                                                                        RoundedRectangle(cornerRadius: 15.0)
+                                                                                            .frame(width: 120, height: 50, alignment: .center)
+                                                                                            .foregroundColor(isRunning ? .pink : .green)
+
+                                                                                        Text(isRunning ? "Stop" : "Start")
+                                                                                            .font(.title)
+                                                                                            .foregroundColor(.white)
+                                                                                    }
+                                                                                }
+
+                                                                                Button(action: {
+                                                                                    progressTime = 0
+                                                                                    progressTimeMath = 0
+                                                                                    progressTimeEnglish = 0
+                                                                                    progressTimeWLang = 0
+                                                                                    progressTimeCS = 0
+                                                                                    progressTimeEngin = 0
+                                                                                    progressTimeChem = 0
+                                                                                    progressTimePhys = 0
+                                                                                    progressTimeAstro = 0
+                                                                                    progressTimeBio = 0
+                                                                                    ptr = 0
+                                                                                }) {
+                                                                                    ZStack {
+                                                                                        RoundedRectangle(cornerRadius: 15.0)
+                                                                                            .frame(width: 120, height: 50, alignment: .center)
+                                                                                            .foregroundColor(.black)
+
+                                                                                        Text("Reset")
+                                                                                            .font(.title)
+                                                                                            .foregroundColor(.white)
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                            }
+                                                            .zIndex(tund)
+                                                        ZStack{
+                                                        Rectangle()
+                                                    .fill(Color.blue)
+                                                    .frame(width:350, height:350)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                                            VStack {
+                                                                        HStack(spacing: 1) {
+                                                                            StopwatchUnit(timeUnit: hours2, timeUnitText: "HR", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: minutes2, timeUnitText: "MIN", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: seconds2, timeUnitText: "SEC", color: .clear)
+                                                                        }
+
+                                                                        HStack {
+                                                                            Button(action: {
+                                                                                if isRunningt2{
+                                                                                    timer2?.invalidate()
+                                                                                } else {
+                                                                                    timer2 = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+                                                                                        if classChoice == "Math"{
+                                                                                            progressTimeMath += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        if classChoice == "English"{
+                                                                                            progressTimeEnglish += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "World Language"{
+                                                                                            progressTimeWLang += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Computer Science"{
+                                                                                            progressTimeCS += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Engineering"{
+                                                                                            progressTimeEngin += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Chemistry"{
+                                                                                            progressTimeChem += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Physics"{
+                                                                                            progressTimePhys += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Astronomy"{
+                                                                                            progressTimeAstro += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Biology"{
+                                                                                            progressTimeBio += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Nothing"{
+                                                                                            progressTime += 0
+                                                                                            progressTimeCG += 0
+                                                                                        }
+                                                                                        if ptr.isMultiple(of: 20) {
+                                                                                              self.isPresented6.toggle()
+                                                                                            }
+                                                                                    })
+                                                                                }
+                                                                                isRunningt2.toggle()
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(isRunningt2 ? .pink : .green)
+
+                                                                                    Text(isRunningt2 ? "Stop" : "Start")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+
+                                                                            Button(action: {
+                                                                                progressTime = 0
+                                                                                progressTimeMath = 0
+                                                                                progressTimeEnglish = 0
+                                                                                progressTimeWLang = 0
+                                                                                progressTimeCS = 0
+                                                                                progressTimeEngin = 0
+                                                                                progressTimeChem = 0
+                                                                                progressTimePhys = 0
+                                                                                progressTimeAstro = 0
+                                                                                progressTimeBio = 0
+                                                                                ptr = 0
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(.black)
+
+                                                                                    Text("Reset")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                        }
+                                                        .zIndex(t2)
+                                                        ZStack{
+                                                        Rectangle()
+                                                    .fill(Color.blue)
+                                                    .frame(width:350, height:350)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                                            VStack {
+                                                                        HStack(spacing: 1) {
+                                                                            StopwatchUnit(timeUnit: hours3, timeUnitText: "HR", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: minutes3, timeUnitText: "MIN", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: seconds3, timeUnitText: "SEC", color: .clear)
+                                                                        }
+
+                                                                        HStack {
+                                                                            Button(action: {
+                                                                                if isRunningt3{
+                                                                                    timer3?.invalidate()
+                                                                                } else {
+                                                                                    timer3 = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+                                                                                        if classChoice == "Math"{
+                                                                                            progressTimeMath += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        if classChoice == "English"{
+                                                                                            progressTimeEnglish += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "World Language"{
+                                                                                            progressTimeWLang += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Computer Science"{
+                                                                                            progressTimeCS += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Engineering"{
+                                                                                            progressTimeEngin += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Chemistry"{
+                                                                                            progressTimeChem += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Physics"{
+                                                                                            progressTimePhys += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Astronomy"{
+                                                                                            progressTimeAstro += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Biology"{
+                                                                                            progressTimeBio += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Nothing"{
+                                                                                            progressTime += 0
+                                                                                            progressTimeCG += 0
+                                                                                        }
+                                                                                        if 3600.isMultiple(of: ptr) {
+                                                                                              self.isPresented6.toggle()
+                                                                                            }
+                                                                                    })
+                                                                                }
+                                                                                isRunningt3.toggle()
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(isRunningt3 ? .pink : .green)
+
+                                                                                    Text(isRunningt3 ? "Stop" : "Start")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+
+                                                                            Button(action: {
+                                                                                progressTime = 0
+                                                                                progressTimeMath = 0
+                                                                                progressTimeEnglish = 0
+                                                                                progressTimeWLang = 0
+                                                                                progressTimeCS = 0
+                                                                                progressTimeEngin = 0
+                                                                                progressTimeChem = 0
+                                                                                progressTimePhys = 0
+                                                                                progressTimeAstro = 0
+                                                                                progressTimeBio = 0
+                                                                                ptr = 0
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(.black)
+
+                                                                                    Text("Reset")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                        }
+                                                        .zIndex(t3)
+                                                        ZStack{
+                                                        Rectangle()
+                                                    .fill(Color.blue)
+                                                    .frame(width:350, height:350)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                                            VStack {
+                                                                        HStack(spacing: 1) {
+                                                                            StopwatchUnit(timeUnit: hours4, timeUnitText: "HR", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: minutes4, timeUnitText: "MIN", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: seconds4, timeUnitText: "SEC", color: .clear)
+                                                                        }
+
+                                                                        HStack {
+                                                                            Button(action: {
+                                                                                if isRunningt4{
+                                                                                    timer4?.invalidate()
+                                                                                } else {
+                                                                                    timer4 = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+                                                                                        if classChoice == "Math"{
+                                                                                            progressTimeMath += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        if classChoice == "English"{
+                                                                                            progressTimeEnglish += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "World Language"{
+                                                                                            progressTimeWLang += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Computer Science"{
+                                                                                            progressTimeCS += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Engineering"{
+                                                                                            progressTimeEngin += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Chemistry"{
+                                                                                            progressTimeChem += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Physics"{
+                                                                                            progressTimePhys += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Astronomy"{
+                                                                                            progressTimeAstro += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Biology"{
+                                                                                            progressTimeBio += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Nothing"{
+                                                                                            progressTime += 0
+                                                                                            progressTimeCG += 0
+                                                                                        }
+                                                                                        if 3600.isMultiple(of: ptr) {
+                                                                                              self.isPresented6.toggle()
+                                                                                            }
+                                                                                    })
+                                                                                }
+                                                                                isRunningt4.toggle()
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(isRunningt4 ? .pink : .green)
+
+                                                                                    Text(isRunningt4 ? "Stop" : "Start")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+
+                                                                            Button(action: {
+                                                                                progressTime = 0
+                                                                                progressTimeMath = 0
+                                                                                progressTimeEnglish = 0
+                                                                                progressTimeWLang = 0
+                                                                                progressTimeCS = 0
+                                                                                progressTimeEngin = 0
+                                                                                progressTimeChem = 0
+                                                                                progressTimePhys = 0
+                                                                                progressTimeAstro = 0
+                                                                                progressTimeBio = 0
+                                                                                ptr = 0
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(.black)
+
+                                                                                    Text("Reset")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                        }
+                                                        .zIndex(t4)
+                                                        ZStack{
+                                                        Rectangle()
+                                                    .fill(Color.blue)
+                                                    .frame(width:350, height:350)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                                            VStack {
+                                                                        HStack(spacing: 1) {
+                                                                            StopwatchUnit(timeUnit: hours5, timeUnitText: "HR", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: minutes5, timeUnitText: "MIN", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: seconds5, timeUnitText: "SEC", color: .clear)
+                                                                        }
+
+                                                                        HStack {
+                                                                            Button(action: {
+                                                                                if isRunningt5{
+                                                                                    timer5?.invalidate()
+                                                                                } else {
+                                                                                    timer5 = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+                                                                                        if classChoice == "Math"{
+                                                                                            progressTimeMath += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        if classChoice == "English"{
+                                                                                            progressTimeEnglish += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "World Language"{
+                                                                                            progressTimeWLang += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Computer Science"{
+                                                                                            progressTimeCS += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Engineering"{
+                                                                                            progressTimeEngin += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Chemistry"{
+                                                                                            progressTimeChem += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Physics"{
+                                                                                            progressTimePhys += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Astronomy"{
+                                                                                            progressTimeAstro += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Biology"{
+                                                                                            progressTimeBio += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Nothing"{
+                                                                                            progressTime += 0
+                                                                                            progressTimeCG += 0
+                                                                                        }
+                                                                                        if 3600.isMultiple(of: ptr) {
+                                                                                              self.isPresented6.toggle()
+                                                                                            }
+                                                                                    })
+                                                                                }
+                                                                                isRunningt5.toggle()
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(isRunningt5 ? .pink : .green)
+
+                                                                                    Text(isRunningt5 ? "Stop" : "Start")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+
+                                                                            Button(action: {
+                                                                                progressTime = 0
+                                                                                progressTimeMath = 0
+                                                                                progressTimeEnglish = 0
+                                                                                progressTimeWLang = 0
+                                                                                progressTimeCS = 0
+                                                                                progressTimeEngin = 0
+                                                                                progressTimeChem = 0
+                                                                                progressTimePhys = 0
+                                                                                progressTimeAstro = 0
+                                                                                progressTimeBio = 0
+                                                                                ptr = 0
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(.black)
+
+                                                                                    Text("Reset")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                        }
+                                                        .zIndex(t5)
+                                                        ZStack{
+                                                        Rectangle()
+                                                    .fill(Color.blue)
+                                                    .frame(width:350, height:350)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                                            VStack {
+                                                                        HStack(spacing: 1) {
+                                                                            StopwatchUnit(timeUnit: hours6, timeUnitText: "HR", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: minutes6, timeUnitText: "MIN", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: seconds6, timeUnitText: "SEC", color: .clear)
+                                                                        }
+
+                                                                        HStack {
+                                                                            Button(action: {
+                                                                                if isRunningt6{
+                                                                                    timer6?.invalidate()
+                                                                                } else {
+                                                                                    timer6 = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+                                                                                        if classChoice == "Math"{
+                                                                                            progressTimeMath += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        if classChoice == "English"{
+                                                                                            progressTimeEnglish += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "World Language"{
+                                                                                            progressTimeWLang += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Computer Science"{
+                                                                                            progressTimeCS += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Engineering"{
+                                                                                            progressTimeEngin += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Chemistry"{
+                                                                                            progressTimeChem += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Physics"{
+                                                                                            progressTimePhys += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Astronomy"{
+                                                                                            progressTimeAstro += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Biology"{
+                                                                                            progressTimeBio += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Nothing"{
+                                                                                            progressTime += 0
+                                                                                            progressTimeCG += 0
+                                                                                        }
+                                                                                        if 3600.isMultiple(of: ptr) {
+                                                                                              self.isPresented6.toggle()
+                                                                                            }
+                                                                                    })
+                                                                                }
+                                                                                isRunningt6.toggle()
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(isRunningt6 ? .pink : .green)
+
+                                                                                    Text(isRunningt6 ? "Stop" : "Start")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+
+                                                                            Button(action: {
+                                                                                progressTime = 0
+                                                                                progressTimeMath = 0
+                                                                                progressTimeEnglish = 0
+                                                                                progressTimeWLang = 0
+                                                                                progressTimeCS = 0
+                                                                                progressTimeEngin = 0
+                                                                                progressTimeChem = 0
+                                                                                progressTimePhys = 0
+                                                                                progressTimeAstro = 0
+                                                                                progressTimeBio = 0
+                                                                                ptr = 0
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(.black)
+
+                                                                                    Text("Reset")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                        }
+                                                        .zIndex(t6)
+                                                        ZStack{
+                                                        Rectangle()
+                                                    .fill(Color.blue)
+                                                    .frame(width:350, height:350)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                                            VStack {
+                                                                        HStack(spacing: 1) {
+                                                                            StopwatchUnit(timeUnit: hours7, timeUnitText: "HR", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: minutes7, timeUnitText: "MIN", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: seconds7, timeUnitText: "SEC", color: .clear)
+                                                                        }
+
+                                                                        HStack {
+                                                                            Button(action: {
+                                                                                if isRunningt7{
+                                                                                    timer7?.invalidate()
+                                                                                } else {
+                                                                                    timer7 = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+                                                                                        if classChoice == "Math"{
+                                                                                            progressTimeMath += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        if classChoice == "English"{
+                                                                                            progressTimeEnglish += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "World Language"{
+                                                                                            progressTimeWLang += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Computer Science"{
+                                                                                            progressTimeCS += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Engineering"{
+                                                                                            progressTimeEngin += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Chemistry"{
+                                                                                            progressTimeChem += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Physics"{
+                                                                                            progressTimePhys += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Astronomy"{
+                                                                                            progressTimeAstro += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Biology"{
+                                                                                            progressTimeBio += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Nothing"{
+                                                                                            progressTime += 0
+                                                                                            progressTimeCG += 0
+                                                                                        }
+                                                                                        if 3600.isMultiple(of: ptr) {
+                                                                                              self.isPresented6.toggle()
+                                                                                            }
+                                                                                    })
+                                                                                }
+                                                                                isRunningt7.toggle()
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(isRunningt7 ? .pink : .green)
+
+                                                                                    Text(isRunningt7 ? "Stop" : "Start")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+
+                                                                            Button(action: {
+                                                                                progressTime = 0
+                                                                                progressTimeMath = 0
+                                                                                progressTimeEnglish = 0
+                                                                                progressTimeWLang = 0
+                                                                                progressTimeCS = 0
+                                                                                progressTimeEngin = 0
+                                                                                progressTimeChem = 0
+                                                                                progressTimePhys = 0
+                                                                                progressTimeAstro = 0
+                                                                                progressTimeBio = 0
+                                                                                ptr = 0
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(.black)
+
+                                                                                    Text("Reset")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                        }
+                                                        .zIndex(t7)
+                                                        ZStack{
+                                                        Rectangle()
+                                                    .fill(Color.blue)
+                                                    .frame(width:350, height:350)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                                            VStack {
+                                                                        HStack(spacing: 1) {
+                                                                            StopwatchUnit(timeUnit: hours8, timeUnitText: "HR", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: minutes8, timeUnitText: "MIN", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: seconds8, timeUnitText: "SEC", color: .clear)
+                                                                        }
+
+                                                                        HStack {
+                                                                            Button(action: {
+                                                                                if isRunningt8{
+                                                                                    timer8?.invalidate()
+                                                                                } else {
+                                                                                    timer8 = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+                                                                                        if classChoice == "Math"{
+                                                                                            progressTimeMath += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        if classChoice == "English"{
+                                                                                            progressTimeEnglish += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "World Language"{
+                                                                                            progressTimeWLang += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Computer Science"{
+                                                                                            progressTimeCS += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Engineering"{
+                                                                                            progressTimeEngin += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Chemistry"{
+                                                                                            progressTimeChem += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Physics"{
+                                                                                            progressTimePhys += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Astronomy"{
+                                                                                            progressTimeAstro += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Biology"{
+                                                                                            progressTimeBio += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Nothing"{
+                                                                                            progressTime += 0
+                                                                                            progressTimeCG += 0
+                                                                                        }
+                                                                                        if 3600.isMultiple(of: ptr) {
+                                                                                              self.isPresented6.toggle()
+                                                                                            }
+                                                                                    })
+                                                                                }
+                                                                                isRunningt8.toggle()
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(isRunningt8 ? .pink : .green)
+
+                                                                                    Text(isRunningt8 ? "Stop" : "Start")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+
+                                                                            Button(action: {
+                                                                                progressTime = 0
+                                                                                progressTimeMath = 0
+                                                                                progressTimeEnglish = 0
+                                                                                progressTimeWLang = 0
+                                                                                progressTimeCS = 0
+                                                                                progressTimeEngin = 0
+                                                                                progressTimeChem = 0
+                                                                                progressTimePhys = 0
+                                                                                progressTimeAstro = 0
+                                                                                progressTimeBio = 0
+                                                                                ptr = 0
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(.black)
+
+                                                                                    Text("Reset")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                        }
+                                                        .zIndex(t8)
+                                                        ZStack{
+                                                        Rectangle()
+                                                    .fill(Color.blue)
+                                                    .frame(width:350, height:350)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                                            VStack {
+                                                                        HStack(spacing: 1) {
+                                                                            StopwatchUnit(timeUnit: hours9, timeUnitText: "HR", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: minutes9, timeUnitText: "MIN", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: seconds9, timeUnitText: "SEC", color: .clear)
+                                                                        }
+
+                                                                        HStack {
+                                                                            Button(action: {
+                                                                                if isRunningt9{
+                                                                                    timer9?.invalidate()
+                                                                                } else {
+                                                                                    timer9 = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+                                                                                        if classChoice == "Math"{
+                                                                                            progressTimeMath += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        if classChoice == "English"{
+                                                                                            progressTimeEnglish += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "World Language"{
+                                                                                            progressTimeWLang += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Computer Science"{
+                                                                                            progressTimeCS += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Engineering"{
+                                                                                            progressTimeEngin += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Chemistry"{
+                                                                                            progressTimeChem += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Physics"{
+                                                                                            progressTimePhys += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Astronomy"{
+                                                                                            progressTimeAstro += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Biology"{
+                                                                                            progressTimeBio += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Nothing"{
+                                                                                            progressTime += 0
+                                                                                            progressTimeCG += 0
+                                                                                        }
+                                                                                        if 3600.isMultiple(of: ptr) {
+                                                                                              self.isPresented6.toggle()
+                                                                                            }
+                                                                                    })
+                                                                                }
+                                                                                isRunningt9.toggle()
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(isRunningt9 ? .pink : .green)
+
+                                                                                    Text(isRunningt9 ? "Stop" : "Start")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+
+                                                                            Button(action: {
+                                                                                progressTime = 0
+                                                                                progressTimeMath = 0
+                                                                                progressTimeEnglish = 0
+                                                                                progressTimeWLang = 0
+                                                                                progressTimeCS = 0
+                                                                                progressTimeEngin = 0
+                                                                                progressTimeChem = 0
+                                                                                progressTimePhys = 0
+                                                                                progressTimeAstro = 0
+                                                                                progressTimeBio = 0
+                                                                                ptr = 0
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(.black)
+
+                                                                                    Text("Reset")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                        }
+                                                        .zIndex(t9)
+                                                        ZStack{
+                                                        Rectangle()
+                                                    .fill(Color.blue)
+                                                    .frame(width:350, height:350)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                                            VStack {
+                                                                        HStack(spacing: 1) {
+                                                                            StopwatchUnit(timeUnit: hours10, timeUnitText: "HR", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: minutes10, timeUnitText: "MIN", color: .clear)
+                                                                            Text(":")
+                                                                                .font(.system(size: 48))
+                                                                                .foregroundColor(.white)
+                                                                                .offset(y: -18)
+                                                                            StopwatchUnit(timeUnit: seconds10, timeUnitText: "SEC", color: .clear)
+                                                                        }
+
+                                                                        HStack {
+                                                                            Button(action: {
+                                                                                if isRunningt10{
+                                                                                    timer10?.invalidate()
+                                                                                } else {
+                                                                                    timer10 = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+                                                                                        if classChoice == "Math"{
+                                                                                            progressTimeMath += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        if classChoice == "English"{
+                                                                                            progressTimeEnglish += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "World Language"{
+                                                                                            progressTimeWLang += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Computer Science"{
+                                                                                            progressTimeCS += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Engineering"{
+                                                                                            progressTimeEngin += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Chemistry"{
+                                                                                            progressTimeChem += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Physics"{
+                                                                                            progressTimePhys += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Astronomy"{
+                                                                                            progressTimeAstro += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Biology"{
+                                                                                            progressTimeBio += 1
+                                                                                            progressTimeCG += 1
+                                                                                            ptr += 1
+                                                                                        }
+                                                                                        else if classChoice == "Nothing"{
+                                                                                            progressTime += 0
+                                                                                            progressTimeCG += 0
+                                                                                        }
+                                                                                        if 3600.isMultiple(of: ptr) {
+                                                                                              self.isPresented6.toggle()
+                                                                                            }
+                                                                                    })
+                                                                                }
+                                                                                isRunningt10.toggle()
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(isRunningt10 ? .pink : .green)
+
+                                                                                    Text(isRunningt10 ? "Stop" : "Start")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+
+                                                                            Button(action: {
+                                                                                progressTime = 0
+                                                                                progressTimeMath = 0
+                                                                                progressTimeEnglish = 0
+                                                                                progressTimeWLang = 0
+                                                                                progressTimeCS = 0
+                                                                                progressTimeEngin = 0
+                                                                                progressTimeChem = 0
+                                                                                progressTimePhys = 0
+                                                                                progressTimeAstro = 0
+                                                                                progressTimeBio = 0
+                                                                                ptr = 0
+                                                                            }) {
+                                                                                ZStack {
+                                                                                    RoundedRectangle(cornerRadius: 15.0)
+                                                                                        .frame(width: 120, height: 50, alignment: .center)
+                                                                                        .foregroundColor(.black)
+
+                                                                                    Text("Reset")
+                                                                                        .font(.title)
+                                                                                        .foregroundColor(.white)
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                        }
+                                                        .zIndex(t10)
+                            
+                        }
+                        ZStack {
+                              Button(action: {
+                                withAnimation {
+                                  self.isPresented2.toggle()
+                                }
+                              }) {
+                                  ZStack{
+                                      Rectangle()
+                                          .background(Color.blue)
+                                          .frame(width:350, height:150)
+                                          .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                      VStack{
+                                          Text("Currently Studying \(self.classChoice)")
+                                              .foregroundColor(.white)
+                                              .fontWeight(.bold)
+                                      Text("Choose a class")
+                                          .foregroundColor(.white)
+                                          .padding()
+                                          .background(Color.black)
+                                          .cornerRadius(40)
+                                          .padding(7)
+                                          .overlay(
+                                              RoundedRectangle(cornerRadius:40)
+                                                  .stroke(Color.black, lineWidth:5))
+                                      }
+                                  }
+                              }
+
+                              if isPresented2 {
+                                ZStack(alignment: .top) {
+                                  Button(action: {
+                                    withAnimation {
+                                      self.isPresented2.toggle()
+                                    }
+                                  }) {
+                                      VStack{
+                                    Text("Pick a class you want to study for: ")
+                                              .foregroundColor(.black)
+                                              .font(.title)
+                                          Button(action:{
+                                              self.isPresented2.toggle()
+                                              self.classChoice = "Math"
+                                              progressTimeMath = 0
+                                              if isRunningt2{
+                                                  timer2?.invalidate()
+                                              }
+                                              tund = 1
+                                              t2 = 999
+                                              t3 = 1
+                                              t4 = 1
+                                              t5 = 1
+                                              t6 = 1
+                                              t7 = 1
+                                              t8 = 1
+                                              t9 = 1
+                                              t10 = 1
+                                          }){
+                                              Text("Math")
+                                                  .foregroundColor(.blue)
+                                          }
+                                          Button(action:{
+                                              self.isPresented2.toggle()
+                                              self.classChoice = "English"
+                                              progressTimeEnglish = 0
+                                              if isRunningt3{
+                                                  timer3?.invalidate()
+                                              }
+                                              tund = 1
+                                              t2 = 1
+                                              t3 = 999
+                                              t4 = 1
+                                              t5 = 1
+                                              t6 = 1
+                                              t7 = 1
+                                              t8 = 1
+                                              t9 = 1
+                                              t10 = 1
+                                          }){
+                                              Text("English")
+                                                  .foregroundColor(.blue)
+                                          }
+                                          Button(action:{
+                                              self.isPresented2.toggle()
+                                              self.classChoice = "World Language"
+                                              progressTimeWLang = 0
+                                              if isRunningt4{
+                                                  timer4?.invalidate()
+                                              }
+                                              tund = 1
+                                              t2 = 1
+                                              t3 = 1
+                                              t4 = 999
+                                              t5 = 1
+                                              t6 = 1
+                                              t7 = 1
+                                              t8 = 1
+                                              t9 = 1
+                                              t10 = 1
+                                          }){
+                                              Text("World Language")
+                                                  .foregroundColor(.blue)
+                                          }
+                                          Button(action:{
+                                              self.isPresented2.toggle()
+                                              self.classChoice = "Computer Science"
+                                              progressTimeCS = 0
+                                              if isRunningt5{
+                                                  timer5?.invalidate()
+                                              }
+                                              tund = 1
+                                              t2 = 1
+                                              t3 = 1
+                                              t4 = 1
+                                              t5 = 999
+                                              t6 = 1
+                                              t7 = 1
+                                              t8 = 1
+                                              t9 = 1
+                                              t10 = 1
+                                          }){
+                                              Text("Computer Science")
+                                                  .foregroundColor(.blue)
+                                          }
+                                          Button(action:{
+                                              self.isPresented2.toggle()
+                                              self.classChoice = "Engineering"
+                                              progressTimeEngin = 0
+                                              if isRunningt6{
+                                                  timer6?.invalidate()
+                                              }
+                                              tund = 1
+                                              t2 = 1
+                                              t3 = 1
+                                              t4 = 1
+                                              t5 = 1
+                                              t6 = 999
+                                              t7 = 1
+                                              t8 = 1
+                                              t9 = 1
+                                              t10 = 1
+                                          }){
+                                              Text("Engineering")
+                                                  .foregroundColor(.blue)
+                                          }
+                                          Button(action:{
+                                              self.isPresented2.toggle()
+                                              self.classChoice = "Chemistry"
+                                              progressTimeChem = 0
+                                              if isRunningt7{
+                                                  timer7?.invalidate()
+                                              }
+                                              tund = 1
+                                              t2 = 1
+                                              t3 = 1
+                                              t4 = 1
+                                              t5 = 1
+                                              t6 = 1
+                                              t7 = 999
+                                              t8 = 1
+                                              t9 = 1
+                                              t10 = 1
+                                          }){
+                                              Text("Chemistry")
+                                                  .foregroundColor(.blue)
+                                          }
+                                          Button(action:{
+                                              self.isPresented2.toggle()
+                                              self.classChoice = "Physics"
+                                              progressTimePhys = 0
+                                              if isRunningt8{
+                                                  timer8?.invalidate()
+                                              }
+                                              tund = 1
+                                              t2 = 1
+                                              t3 = 1
+                                              t4 = 1
+                                              t5 = 1
+                                              t6 = 1
+                                              t7 = 1
+                                              t8 = 999
+                                              t9 = 1
+                                              t10 = 1
+                                          }){
+                                              Text("Physics")
+                                                  .foregroundColor(.blue)
+                                          }
+                                          Button(action:{
+                                              self.isPresented2.toggle()
+                                              self.classChoice = "Astronomy"
+                                              progressTimeAstro = 0
+                                              if isRunningt9{
+                                                  timer9?.invalidate()
+                                              }
+                                              tund = 1
+                                              t2 = 1
+                                              t3 = 1
+                                              t4 = 1
+                                              t5 = 1
+                                              t6 = 1
+                                              t7 = 1
+                                              t8 = 1
+                                              t9 = 999
+                                              t10 = 1
+                                          }){
+                                              Text("Astronomy")
+                                                  .foregroundColor(.blue)
+                                          }
+                                          Button(action:{
+                                              self.isPresented2.toggle()
+                                              self.classChoice = "Biology"
+                                              progressTimeBio = 0
+                                              if isRunningt10{
+                                                  timer10?.invalidate()
+                                              }
+                                              tund = 1
+                                              t2 = 1
+                                              t3 = 1
+                                              t4 = 1
+                                              t5 = 1
+                                              t6 = 1
+                                              t7 = 1
+                                              t8 = 1
+                                              t9 = 1
+                                              t10 = 999
+                                          }){
+                                              Text("Biology")
+                                                  .foregroundColor(.blue)
+                                          }
+                                      }
+                                  }
+                                }
+                                .frame(width: 350, height: 400)
+                                .background(Color.white)
+                                .transition(.move(edge: .bottom))
+                                .animation(.easeInOut)
+                                .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                              }
+                            }
+                        
+                        ZStack{
+                    Rectangle()
+                        .fill(Color.white)
+                        .frame(width:350, height:70)
+                        .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                            ZStack {
+                                  Button(action: {
+                                    withAnimation {
+                                        self.isPresented2 = false
+                                        self.isPresented3 = false
+                                        self.isPresented4 = false
+                                        self.isPresented5 = false
+                                      self.isPresented3.toggle()
+                                    }
+                                  }) {
+                                      HStack{
+                                      Text("Choose Your Assessment Grade")
+                                          .foregroundColor(.blue)
+                                          .frame(width:345, height: 50, alignment: .center)
+                                      }
+                                  }
+
+                                  if isPresented3 {
+                                    ZStack(alignment: .top) {
+                                      Button(action: {
+                                        withAnimation {
+                                          self.isPresented3.toggle()
+                                        }
+                                      }) {
+                                          Button(action:{
+                                              self.finalGrade = "A"
+                                              self.isPresented4.toggle()
+                                          }){
+                                              ZStack{
+                                                  Rectangle()
+                                                      .fill(Color.blue)
+                                                      .frame(width:50, height:50)
+                                                      .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                                  Text("A")
+                                                      .foregroundColor(.white)
+                                              }
+                                          }
+                                          Button(action:{
+                                              self.finalGrade = "B"
+                                              self.isPresented4.toggle()
+                                          }){
+                                              ZStack{
+                                                  Rectangle()
+                                                      .fill(Color.blue)
+                                                      .frame(width:50, height:50)
+                                                      .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                                  Text("B")
+                                                      .foregroundColor(.white)
+                                              }
+                                          }
+                                          Button(action:{
+                                              self.finalGrade = "C"
+                                              self.isPresented4.toggle()
+                                          }){
+                                              ZStack{
+                                                  Rectangle()
+                                                      .fill(Color.blue)
+                                                      .frame(width:50, height:50)
+                                                      .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                                  Text("C")
+                                                      .foregroundColor(.white)
+                                              }
+                                          }
+                                          Button(action:{
+                                              self.finalGrade = "D"
+                                              self.isPresented4.toggle()
+                                          }){
+                                              ZStack{
+                                                  Rectangle()
+                                                      .fill(Color.blue)
+                                                      .frame(width:50, height:50)
+                                                      .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                                  Text("D")
+                                                      .foregroundColor(.white)
+                                              }
+                                          }
+                                          Button(action:{
+                                              self.finalGrade = "F"
+                                              self.isPresented4.toggle()
+                                          }){
+                                              ZStack{
+                                                  Rectangle()
+                                                      .fill(Color.blue)
+                                                      .frame(width:50, height:50)
+                                                      .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                                  Text("F")
+                                                      .foregroundColor(.white)
+                                              }
+                                          }
+                                      }
+                                        if isPresented4{
+                                                                                    ZStack(alignment: .top){
+                                                                                        Rectangle()
+                                                                                            .fill(Color.white)
+                                                                                            .frame(width:350, height:50)
+                                                                                            .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                                                                        Button(action: {
+                                                                                          withAnimation {
+                                                                                            self.isPresented4.toggle()
+                                                                                              self.isPresented3.toggle()
+                                                                                          }
+                                                                                        }) {
+                                                                                            VStack{
+                                                                                            Text("Are you satisfied with your grade?")
+                                                                                                .foregroundColor(.blue)
+                                                                                                .frame(width:345, height: 50, alignment: .center)
+                                                                                                HStack{
+                                                                                                    Button(action: {
+                                                                                                      withAnimation {
+                                                                                                        self.satlev = "sat"
+                                                                                                          self.isPresented5.toggle()
+                                                                                                          self.isPresented4.toggle()
+                                                                                                          self.RFS.toggle()
+                                                                                                          if classChoice == "Math"{
+                                                                                                                              if progressTimeMath < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimeMath <= 10800 || progressTimeMath >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimeMath > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if classChoice == "English"{
+                                                                                                                              if progressTimeEnglish < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimeEnglish <= 10800 || progressTimeEnglish >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimeEnglish > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if classChoice == "World Language"{
+                                                                                                                              if progressTimeWLang < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimeWLang <= 10800 || progressTimeWLang >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimeWLang > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if classChoice == "Computer Science"{
+                                                                                                                              if progressTimeCS < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimeCS <= 10800 || progressTimeCS >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimeCS > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if classChoice == "Engineering"{
+                                                                                                                              if progressTimeEngin < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimeEngin <= 10800 || progressTimeEngin >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimeEngin > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if classChoice == "Chemistry"{
+                                                                                                                              if progressTimeChem < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimeChem <= 10800 || progressTimeChem >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimeChem > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if classChoice == "Physics"{
+                                                                                                                              if progressTimePhys < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimePhys <= 10800 || progressTimePhys >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimePhys > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if classChoice == "Astronomy"{
+                                                                                                                              if progressTimeAstro < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimeAstro <= 10800 || progressTimeAstro >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimeAstro > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if classChoice == "Biology"{
+                                                                                                                              if progressTimeBio < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimeBio <= 10800 || progressTimeBio >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimeBio > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if solutionVarLev == "low" && satlev == "unsat"{
+                                                                                                                              solutionVar = "Based on your study time, it looks like a little more studying could have benefitted you and earned you a higher grade."
+                                                                                                                          }
+                                                                                                                          if solutionVarLev == "med" && satlev == "unsat"{
+                                                                                                                              solutionVar = "Based on your study time, it looks like you've studied enough but could have used a little more studying."
+                                                                                                                          }
+                                                                                                                          if solutionVarLev == "high" && satlev == "unsat"{
+                                                                                                                              solutionVar = "Based on your study time, it looks like you might want to change your study habits for the next assessment. You've studied enough and could benefit from a different method of studying."
+                                                                                                                          }
+                                                                                                                          if (solutionVarLev == "low" || solutionVarLev == "med" || solutionVarLev == "high") && (finalGrade == "A" || finalGrade == "B" ||  finalGrade == "C") && satlev == "sat"{
+                                                                                                                              solutionVar = "Great job. You are satisfied with your test score."
+                                                                                                                          }
+                                                                                                                          if (solutionVarLev == "low" || solutionVarLev == "med") && (finalGrade == "D" || finalGrade == "F") && satlev == "sat"{
+                                                                                                                              solutionVar = "Great job. You are satisfied with your test score. However, to improve your grade, you could benefit from studying a little more."
+                                                                                                                          }
+                                                                                                                          if solutionVarLev == "high" && (finalGrade == "D" || finalGrade == "F") && satlev == "sat"{
+                                                                                                                              solutionVar = "Great job. You are satisfied with your test score. However, to improve your grade, you could benefit from changing your studu habits. Consider using a different study methoid next time."
+                                                                                                                          }
+
+                                                                                                      }
+                                                                                                    }) {
+                                                                                                        HStack{
+                                                                                                        Text("Yes")
+                                                                                                            .foregroundColor(.blue)
+                                                                                                            .frame(width:100, height: 50, alignment: .center)
+                                                                                                        }
+                                                                                                    }
+                                                                                                    Button(action: {
+                                                                                                      withAnimation {
+                                                                                                        self.satlev = "unsat"
+                                                                                                          self.isPresented5.toggle()
+                                                                                                          self.isPresented4.toggle()
+                                                                                                          self.RFS.toggle()
+                                                                                                          if classChoice == "Math"{
+                                                                                                                              if progressTimeMath < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimeMath <= 10800 || progressTimeMath >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimeMath > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if classChoice == "English"{
+                                                                                                                              if progressTimeEnglish < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimeEnglish <= 10800 || progressTimeEnglish >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimeEnglish > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if classChoice == "World Language"{
+                                                                                                                              if progressTimeWLang < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimeWLang <= 10800 || progressTimeWLang >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimeWLang > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if classChoice == "Computer Science"{
+                                                                                                                              if progressTimeCS < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimeCS <= 10800 || progressTimeCS >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimeCS > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if classChoice == "Engineering"{
+                                                                                                                              if progressTimeEngin < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimeEngin <= 10800 || progressTimeEngin >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimeEngin > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if classChoice == "Chemistry"{
+                                                                                                                              if progressTimeChem < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimeChem <= 10800 || progressTimeChem >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimeChem > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if classChoice == "Physics"{
+                                                                                                                              if progressTimePhys < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimePhys <= 10800 || progressTimePhys >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimePhys > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if classChoice == "Astronomy"{
+                                                                                                                              if progressTimeAstro < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimeAstro <= 10800 || progressTimeAstro >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimeAstro > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if classChoice == "Biology"{
+                                                                                                                              if progressTimeBio < 10800{
+                                                                                                                                  solutionVarLev = "low"
+                                                                                                                              }
+                                                                                                                              if progressTimeBio <= 10800 || progressTimeBio >= 21600{
+                                                                                                                                  solutionVarLev = "med"
+                                                                                                                              }
+                                                                                                                              if progressTimeBio > 10800{
+                                                                                                                                  solutionVarLev = "high"
+                                                                                                                              }
+                                                                                                                          }
+                                                                                                                          if solutionVarLev == "low" && satlev == "unsat"{
+                                                                                                                              solutionVar = "Based on your study time, it looks like a little more studying could have benefitted you and earned you a higher grade."
+                                                                                                                          }
+                                                                                                                          if solutionVarLev == "med" && satlev == "unsat"{
+                                                                                                                              solutionVar = "Based on your study time, it looks like you've studied enough but could have used a little more studying."
+                                                                                                                          }
+                                                                                                                          if solutionVarLev == "high" && satlev == "unsat"{
+                                                                                                                              solutionVar = "Based on your study time, it looks like you might want to change your study habits for the next assessment. You've studied enough and could benefit from a different method of studying."
+                                                                                                                          }
+                                                                                                                          if (solutionVarLev == "low" || solutionVarLev == "med" || solutionVarLev == "high") && (finalGrade == "A" || finalGrade == "B" ||  finalGrade == "C") && satlev == "sat"{
+                                                                                                                              solutionVar = "Great job. You are satisfied with your test score."
+                                                                                                                          }
+                                                                                                                          if (solutionVarLev == "low" || solutionVarLev == "med") && (finalGrade == "D" || finalGrade == "F") && satlev == "sat"{
+                                                                                                                              solutionVar = "Great job. You are satisfied with your test score. However, to improve your grade, you could benefit from studying a little more."
+                                                                                                                          }
+                                                                                                                          if solutionVarLev == "high" && (finalGrade == "D" || finalGrade == "F") && satlev == "sat"{
+                                                                                                                              solutionVar = "Great job. You are satisfied with your test score. However, to improve your grade, you could benefit from changing your studu habits. Consider using a different study methoid next time."
+                                                                                                                          }
+
+                                                                                                      }
+                                                                                                    }) {
+                                                                                                        HStack{
+                                                                                                        Text("No")
+                                                                                                            .foregroundColor(.blue)
+                                                                                                            .frame(width:100, height: 50, alignment: .center)
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+
+
+                                                                                    }
+                                                                                }
+                                        if isPresented5{
+                                            ZStack(alignment: .top){
+                                                Rectangle()
+                                                    .fill(Color.white)
+                                                    .frame(width:350, height:50)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                                Button(action: {
+                                                  withAnimation {
+                                                      self.isPresented3.toggle()
+                                                                                                                                                              }
+                                                }) {
+                                                    HStack{
+                                                    Text("Check out your solutions below")
+                                                        .foregroundColor(.blue)
+                                                        .frame(width:345, height: 50, alignment: .center)
+                                                    }
+                                                }
+
+
+                                            }
+                                        }
+                                    }
+                                    .frame(width: 350, height: 250)
+                                    .background(Color.white)
+                                    .transition(.move(edge: .bottom))
+                                    .animation(.easeInOut)
+                                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                  }
+                                }
+
+                        }
+                        ZStack{
+                        Rectangle()
+                    .fill(Color.blue)
+                    .frame(width:350, height:350)
+                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                            VStack{
+                                Text("Solutions")
+                                    .foregroundColor(.white)
+                                Text("Find solutions here")
+                                    .foregroundColor(.white)
+                                ZStack{
+                                    Rectangle()
+                                        .fill(Color.white)
+                                        .frame(width:330, height:200)
+                                        .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                    Text("\(self.solutionVar)")
+                                        .foregroundColor(.blue)
+                                        .frame(width:320, height:190)
+                                }
+                            }
+                        }
+                    Rectangle()
+                            .fill(Color.clear)
+                            .frame(width:350, height:10)
+                            .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.clear)
+                .edgesIgnoringSafeArea(.all)
+                }
+                // End of Tab 2
+
+                      
+            }/// TabView
+            .tabViewStyle(PageTabViewStyle())
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(LinearGradient(gradient: gradient, startPoint: .bottomTrailing, endPoint: .topLeading))
+            .edgesIgnoringSafeArea(.all)
+        }
+    }
+}
+struct StopwatchUnit: View {
+
+    var timeUnit: Int
+    var timeUnitText: String
+    var color: Color
+
+    /// Time unit expressed as String.
+    /// - Includes "0" as prefix if this is less than 10.
+    var timeUnitStr: String {
+        let timeUnitStr = String(timeUnit)
+        return timeUnit < 10 ? "0" + timeUnitStr : timeUnitStr
+    }
+
+    var body: some View {
+        VStack {
+            ZStack {
+                RoundedRectangle(cornerRadius: 15.0)
+                    .stroke(style: StrokeStyle(lineWidth: 3, lineCap: .round))
+                    .fill(color)
+                    .frame(width: 75, height: 75, alignment: .center)
+
+                HStack(spacing: 2) {
+                    Text(timeUnitStr.substring(index: 0))
+                        .font(.system(size: 48))
+                        .frame(width: 28)
+                    Text(timeUnitStr.substring(index: 1))
+                        .font(.system(size: 48))
+                        .frame(width: 28)
+                }
+            }
+
+            Text(timeUnitText)
+                .font(.system(size: 16))
+        }
+        .foregroundColor(.white)
+    }
+}
+
+struct Stopwatch_Previews: PreviewProvider {
+    static var previews: some View {
+        ZStack {
+
+            ContentView()
+        }
+    }
+}
+
+extension String {
+    func substring(index: Int) -> String {
+        let arrayString = Array(self)
+        return String(arrayString[index])
+    }
+}
+
+
+
+struct TabViewDefault_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ContentView()
+        }
+    }
+}
